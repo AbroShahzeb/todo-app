@@ -14,8 +14,6 @@ This is a solution to the [Todo app challenge on Frontend Mentor](https://www.fr
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 This was challenged by frontendmentor.io, I really enjoyed building it. The most stressful and fun part was drag and drop functionality. Which I accomplished using react-dnd library.
