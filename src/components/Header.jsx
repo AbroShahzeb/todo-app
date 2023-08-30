@@ -46,7 +46,7 @@ export default function Header({ onAddTodo, colorTheme, setColorTheme }) {
         />
       </div>
       <div className="bg-white flex items-center rounded-lg dark:bg-very-dark-desaturated-blue ">
-        <div className="w-5 h-5 border-[1px] border-light-grayish-blue rounded-full mr-4 m-3 mx-5 dark:border-very-dark-grayish-blue-1"></div>
+        <div className="p-2 border-[1px] border-light-grayish-blue rounded-full mr-4 m-3 mx-5 dark:border-very-dark-grayish-blue-1"></div>
         <form onSubmit={createTodoOnSubmit} className="w-full">
           <input
             type="text"
