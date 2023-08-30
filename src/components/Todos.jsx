@@ -77,11 +77,11 @@ export default function Todos({
           }
         })}
 
-      {!todos && (
+      {todos.length <= 0 ? (
         <p className="w-full my-8 text-center dark:text-light-grayish-blue">
           Start Adding Todos
         </p>
-      )}
+      ) : null}
 
       <TodosStatus
         todosCount={todosLeftCount}
