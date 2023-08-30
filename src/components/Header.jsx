@@ -28,7 +28,7 @@ export default function Header({ onAddTodo, colorTheme, setColorTheme }) {
 
   function createTodoOnSubmit(e) {
     e.preventDefault();
-    AddTodo(title);
+    onAddTodo(title);
     setTitle;
   }
 
