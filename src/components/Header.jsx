@@ -12,7 +12,6 @@ export default function Header({ onAddTodo, colorTheme, setColorTheme }) {
 
     localStorage.setItem("theme", newTheme);
 
-    console.log(theme);
     setColorTheme(newTheme);
   }
 
@@ -48,11 +47,11 @@ export default function Header({ onAddTodo, colorTheme, setColorTheme }) {
       </div>
       <div className="bg-white flex items-center rounded-lg dark:bg-very-dark-desaturated-blue ">
         <div className="w-5 h-5 border-[1px] border-light-grayish-blue rounded-full mr-4 m-3 mx-5 dark:border-very-dark-grayish-blue-1"></div>
-        <form onSubmit={createTodoOnSubmit}>
+        <form onSubmit={createTodoOnSubmit} className="w-full">
           <input
             type="text"
             placeholder="Create a new todo..."
-            className="placeholder:leading-none text-lg h-full w-full p-4 px-0 bg-transparent focus:outline-none mt-1 dark:placeholder:text-dark-grayish-blue dark:text-light-grayish-blue"
+            className="placeholder:leading-none text-sm h-full w-full p-4 px-0 bg-transparent focus:outline-none mt-1 dark:placeholder:text-dark-grayish-blue dark:text-light-grayish-blue md:shadow-2xl md:shadow-very-light-grayish-blue dark:shadow-very-dark-grayish-blue-1 dark:shadow-none pr-2 md:text-md"
             value={title}
             onChange={(e) => {
               setTitle(e.target.value);

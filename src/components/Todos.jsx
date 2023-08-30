@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Todo from "./Todo";
 import TodosStatus from "./TodoStatus";
 
@@ -33,9 +34,9 @@ const DroppableTarget = ({ todoId, reOrderTodos }) => {
   return (
     <div
       ref={drop}
-      className={`h-2 ${
-        isOver ? "p-2 border-2 border-dashed border-slate-200 " : ""
-      }`}
+      className={`h-3 ${
+        isOver ? "p-2  py-6 border-2 border-dashed border-slate-200 " : ""
+      } `}
     ></div>
   );
 };
@@ -46,19 +47,22 @@ export default function Todos({
   onClearCompleted,
   onDeleteTodo,
   setTodos,
-  handleFilterTodos,
-  filter,
 }) {
   function reOrderTodos(draggedTodo, todoId) {
-    setTodos((todos) => swapObjectsById(todos, draggedTodo.id, todoId));
-    handleFilterTodos(filter);
+    let swappedTodos;
+    setTodos((todos) => {
+      let newTodos = [...todos];
+      swappedTodos = swapObjectsById(newTodos, draggedTodo.id, todoId);
+      return swappedTodos;
+    });
+    localStorage.setItem("todos", JSON.stringify(swappedTodos));
   }
-  const todosLeftCount = todos.filter((todo) => !todo.isCompleted).length;
+  const todosLeftCount = todos?.filter((todo) => !todo.isCompleted).length;
 
   return (
     <div className="flex flex-col mt-5 py-4 bg-white rounded-lg shadow-lg shadow-very-light-grayish-blue md:max-w-4xl mx-auto md:shadow-none dark:bg-very-dark-desaturated-blue dark:shadow-very-dark-grayish-blue-1 dark:shadow-none md:rounded-b-lg">
-      {todos.length ? (
-        todos.map((todo) => {
+      {todos &&
+        todos?.map((todo) => {
           if (todo.isShown) {
             return (
               <div key={todo.id}>
@@ -68,16 +72,17 @@ export default function Todos({
                   onCompleteTodo={handleCompleteTodo}
                   onDeleteTodo={onDeleteTodo}
                 />
-                <DroppableTarget todoId={todo.id} reOrderTodos={reOrderTodos} />
               </div>
             );
           }
-        })
-      ) : (
+        })}
+
+      {!todos && (
         <p className="w-full my-8 text-center dark:text-light-grayish-blue">
           Start Adding Todos
         </p>
       )}
+
       <TodosStatus
         todosCount={todosLeftCount}
         onClearCompleted={onClearCompleted}

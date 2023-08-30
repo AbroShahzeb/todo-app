@@ -4,14 +4,12 @@ import Footer from "./components/Footer";
 import Todos from "./components/Todos";
 import TodoCategories from "./components/TodoCategories";
 import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
 import { TouchBackend } from "react-dnd-touch-backend";
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [colorTheme, setColorTheme] = useState("");
   const [filter, setFilter] = useState("all");
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(function () {
     let theme = localStorage.getItem("theme");
@@ -19,20 +17,12 @@ function App() {
     setColorTheme(theme);
   }, []);
 
-  useEffect(
-    function () {
-      window.addEventListener("resize", () => {
-        setWindowWidth(window.innerWidth);
-      });
-
-      return () => {
-        window.removeEventListener("resize", () => {
-          setWindowWidth(window.innerWidth);
-        });
-      };
-    },
-    [windowWidth]
-  );
+  useEffect(function () {
+    let todos = localStorage.getItem("todos");
+    if (todos) {
+      setTodos(JSON.parse(todos));
+    }
+  }, []);
 
   function handleAddTodo(title) {
     const newTodo = {
@@ -43,62 +33,75 @@ function App() {
     };
 
     if (!title) return;
-    setTodos((todos) => [newTodo, ...todos]);
+    setTodos((todos) => {
+      let newTodos = [newTodo, ...todos];
+      localStorage.setItem("todos", JSON.stringify(newTodos));
+
+      return newTodos;
+    });
   }
 
   function handleCompleteTodo(id) {
-    console.log("Inside handle complete todo");
-    setTodos((todos) =>
-      todos.map((todo) =>
+    setTodos((todos) => {
+      let newTodos = todos.map((todo) =>
         todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
-      )
-    );
+      );
+      localStorage.setItem("todos", JSON.stringify(newTodos));
+      return newTodos;
+    });
   }
 
   function handleFilterTodos(filterCriteria) {
     if (filterCriteria === "active") {
       setFilter("active");
-      setTodos((todos) =>
-        todos.map((todo) =>
+      setTodos((todos) => {
+        return todos.map((todo) =>
           todo.isCompleted
             ? { ...todo, isShown: false }
             : { ...todo, isShown: true }
-        )
-      );
+        );
+      });
     } else if (filterCriteria === "completed") {
       setFilter("completed");
-      setTodos((todos) =>
-        todos.map((todo) =>
+      setTodos((todos) => {
+        return todos.map((todo) =>
           !todo.isCompleted
             ? { ...todo, isShown: false }
             : { ...todo, isShown: true }
-        )
-      );
+        );
+      });
     } else {
       setFilter("all");
-
-      setTodos((todos) =>
-        todos.map((todo) => {
+      setTodos((todos) => {
+        return todos.map((todo) => {
           return { ...todo, isShown: true };
-        })
-      );
+        });
+      });
     }
   }
 
   function handleClearCompleted() {
-    setTodos((todos) => todos.filter((todo) => !todo.isCompleted));
+    setTodos((todos) => {
+      let newTodos = todos.filter((todo) => !todo.isCompleted);
+      localStorage.setItem("todos", JSON.stringify(newTodos));
+      return newTodos;
+    });
   }
 
   function handleDeleteTodo(id) {
-    setTodos((todos) => todos.filter((todo) => todo.id !== id));
+    setTodos((todos) => {
+      let newTodos = todos.filter((todo) => todo.id !== id);
+      localStorage.setItem("todos", JSON.stringify(newTodos));
+      return newTodos;
+    });
   }
 
   return (
-    <DndProvider backend={HTML5Backend}>
+    <DndProvider backend={TouchBackend}>
       <div
         className={`w-full h-screen  ${colorTheme === "dark" ? "dark" : ""} `}
       >
-        <div className="bg-mobile-light w-full h-screen bg-no-repeat sm:bg-desktop-light text-[18px] md:bg-contain p-4 dark:bg-mobile-dark dark:sm:bg-desktop-dark dark:bg-very-dark-blue">
+        <div className="bg-mobile-light w-full min-h-screen bg-no-repeat sm:bg-desktop-light text-[18px] md:bg-contain p-4 dark:bg-mobile-dark dark:sm:bg-desktop-dark dark:bg-very-dark-blue">
           <div className="container mx-auto ">
             <Header
               onAddTodo={handleAddTodo}

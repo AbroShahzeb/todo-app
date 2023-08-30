@@ -14,12 +14,12 @@ export default function Todo({ todo, onCompleteTodo, onDeleteTodo }) {
     <>
       <div
         ref={drag}
-        className={`p-4 flex items-center border-b-[1px] gap-4 dark:border-very-dark-grayish-blue-1 cursor-move ${
-          isDragging ? "border-dashed border-2 border-bright-blue " : ""
+        className={`p-3 pt-0 flex items-center border-b-[1px] gap-4 dark:border-very-dark-grayish-blue-1 cursor-move ${
+          isDragging ? "bg-slate-100 dark:bg-very-dark-grayish-blue-2" : ""
         }`}
       >
         <div
-          className={`py-[7px] flex items-center justify-center px-[6px] rounded-full border-[1px] border-light-grayish-blue ${
+          className={`py-[7px] flex items-center justify-center px-[6px] rounded-full border-[1px] border-light-grayish-blue  ${
             todo.isCompleted
               ? "bg-gradient-to-br from-gradient-start to-gradient-end border-none"
               : ""
@@ -34,7 +34,7 @@ export default function Todo({ todo, onCompleteTodo, onDeleteTodo }) {
           />
         </div>
         <h2
-          className={`mr-auto text-md md:text-lg cursor-pointer ${
+          className={`mr-auto text-sm md:text-md cursor-pointer ${
             todo.isCompleted
               ? "text-light-grayish-blue dark:text-very-dark-grayish-blue-1 line-through"
               : "text-very-dark-grayish-blue dark:text-light-grayish-blue"
