@@ -94,7 +94,7 @@ function App() {
   }
 
   return (
-    <DndProvider backend={HTML5Backend}>
+    <DndProvider backend={TouchBackend}>
       <div
         className={`w-full h-screen  ${colorTheme === "dark" ? "dark" : ""} `}
       >
