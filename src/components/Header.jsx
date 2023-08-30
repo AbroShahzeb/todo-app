@@ -1,4 +1,6 @@
 import { useRef, useState, useEffect } from "react";
+import MoonIcon from "../assets/images/icon-moon.svg";
+import SunIcon from "../assets/images/icon-sun.svg";
 
 export default function Header({ onAddTodo, colorTheme, setColorTheme }) {
   const [title, setTitle] = useState("");
@@ -19,7 +21,6 @@ export default function Header({ onAddTodo, colorTheme, setColorTheme }) {
   }, []);
 
   function createTodo(e) {
-    // e.preventDefault();
     if (e.code === "Enter") {
       onAddTodo(title);
       setTitle("");
@@ -29,7 +30,7 @@ export default function Header({ onAddTodo, colorTheme, setColorTheme }) {
   function createTodoOnSubmit(e) {
     e.preventDefault();
     onAddTodo(title);
-    setTitle;
+    setTitle("");
   }
 
   return (
@@ -39,11 +40,7 @@ export default function Header({ onAddTodo, colorTheme, setColorTheme }) {
           Todo
         </h1>
         <img
-          src={
-            colorTheme === "light"
-              ? "images/icon-moon.svg"
-              : "images/icon-sun.svg"
-          }
+          src={colorTheme === "light" ? MoonIcon : SunIcon}
           alt="Moon Icon"
           className="w-6"
           onClick={toggleTheme}

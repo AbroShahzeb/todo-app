@@ -1,4 +1,6 @@
 import { useDrag } from "react-dnd";
+import CheckIcon from "../assets/images/icon-check.svg";
+import CrossIcon from "../assets/images/icon-cross.svg";
 
 export default function Todo({ todo, onCompleteTodo, onDeleteTodo }) {
   const [{ isDragging }, drag] = useDrag(() => ({
@@ -26,7 +28,7 @@ export default function Todo({ todo, onCompleteTodo, onDeleteTodo }) {
           role="button"
         >
           <img
-            src="/images/icon-check.svg"
+            src={CheckIcon}
             alt="Check Icon"
             className={`${todo.isCompleted ? "opacity-100" : "opacity-0"}`}
           />
@@ -46,7 +48,7 @@ export default function Todo({ todo, onCompleteTodo, onDeleteTodo }) {
           role="button"
           onClick={() => onDeleteTodo(todo.id)}
         >
-          <img src="/images/icon-cross.svg" alt="Cross Icon" />
+          <img src={CrossIcon} alt="Cross Icon" />
         </div>
       </div>
     </>
