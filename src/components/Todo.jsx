@@ -34,7 +34,7 @@ export default function Todo({ todo, onCompleteTodo, onDeleteTodo }) {
           />
         </div>
         <h2
-          className={`mr-auto text-sm md:text-md cursor-pointer ${
+          className={`mr-auto text-sm md:text-lg cursor-pointer ${
             todo.isCompleted
               ? "text-light-grayish-blue dark:text-very-dark-grayish-blue-1 line-through"
               : "text-very-dark-grayish-blue dark:text-light-grayish-blue"

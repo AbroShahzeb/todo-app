@@ -33,9 +33,9 @@ export default function Header({ onAddTodo, colorTheme, setColorTheme }) {
   }
 
   return (
-    <header className="flex flex-col gap-8 pt-10 md:max-w-4xl mx-auto ">
+    <header className="flex flex-col gap-8 pt-10 md:max-w-2xl mx-auto ">
       <div className="flex justify-between items-center ">
-        <h1 className="text-3xl uppercase text-white font-bold tracking-[6px]">
+        <h1 className="text-4xl uppercase text-white font-bold tracking-[9px]">
           Todo
         </h1>
         <img
@@ -51,7 +51,7 @@ export default function Header({ onAddTodo, colorTheme, setColorTheme }) {
           <input
             type="text"
             placeholder="Create a new todo..."
-            className="placeholder:leading-none text-sm h-full w-full p-4 px-0 bg-transparent focus:outline-none mt-1 dark:placeholder:text-dark-grayish-blue dark:text-light-grayish-blue md:shadow-2xl md:shadow-very-light-grayish-blue dark:shadow-very-dark-grayish-blue-1 dark:shadow-none pr-2 md:text-md"
+            className="placeholder:leading-none text-sm h-full w-full p-4 px-0 bg-transparent focus:outline-none mt-1 dark:placeholder:text-dark-grayish-blue dark:text-light-grayish-blue md:shadow-2xl md:shadow-very-light-grayish-blue dark:shadow-very-dark-grayish-blue-1 dark:shadow-none pr-2 md:text-lg"
             value={title}
             onChange={(e) => {
               setTitle(e.target.value);

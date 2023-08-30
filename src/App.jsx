@@ -108,7 +108,7 @@ function App() {
               colorTheme={colorTheme}
               setColorTheme={setColorTheme}
             />
-            <div className="md:shadow-2xl md:shadow-very-light-grayish-blue md:max-w-4xl md:mx-auto md:rounded-b-lg relative dark:shadow-very-dark-grayish-blue-1 dark:shadow-none">
+            <div className="md:shadow-2xl md:shadow-very-light-grayish-blue md:max-w-2xl md:mx-auto md:rounded-b-lg relative dark:shadow-very-dark-grayish-blue-1 dark:shadow-none">
               <Todos
                 todos={todos}
                 handleCompleteTodo={handleCompleteTodo}
