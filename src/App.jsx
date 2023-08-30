@@ -83,7 +83,7 @@ function App() {
   function handleCompleteTodo(id) {
     setTodos((todos) => {
       let newTodos = todos.map((todo) =>
-        todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
+        todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo,
       );
       localStorage.setItem("todos", JSON.stringify(newTodos));
       return newTodos;
@@ -97,7 +97,7 @@ function App() {
         return todos.map((todo) =>
           todo.isCompleted
             ? { ...todo, isShown: false }
-            : { ...todo, isShown: true }
+            : { ...todo, isShown: true },
         );
       });
     } else if (filterCriteria === "completed") {
@@ -106,7 +106,7 @@ function App() {
         return todos.map((todo) =>
           !todo.isCompleted
             ? { ...todo, isShown: false }
-            : { ...todo, isShown: true }
+            : { ...todo, isShown: true },
         );
       });
     } else {
