@@ -60,7 +60,7 @@ export default function Todos({
   const todosLeftCount = todos?.filter((todo) => !todo.isCompleted).length;
 
   return (
-    <div className="flex flex-col mt-5 py-4 bg-white rounded-lg shadow-lg shadow-very-light-grayish-blue md:max-w-4xl mx-auto md:shadow-none dark:bg-very-dark-desaturated-blue dark:shadow-very-dark-grayish-blue-1 dark:shadow-none md:rounded-b-lg">
+    <div className="flex flex-col mt-5 py-4 bg-white rounded-lg shadow-lg shadow-very-light-grayish-blue mx-auto md:shadow-none dark:bg-very-dark-desaturated-blue dark:shadow-very-dark-grayish-blue-1 dark:shadow-none md:max-w-[33rem] md:rounded-b-lg">
       {todos &&
         todos?.map((todo) => {
           if (todo.isShown) {

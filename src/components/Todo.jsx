@@ -14,7 +14,7 @@ export default function Todo({ todo, onCompleteTodo, onDeleteTodo }) {
     <>
       <div
         ref={drag}
-        className={`p-3 pt-0 flex items-center border-b-[1px] gap-4 dark:border-very-dark-grayish-blue-2 cursor-move ${
+        className={`p-3 px-7 pt-0 flex items-center border-b-[1px] gap-4 dark:border-very-dark-grayish-blue-2 cursor-move ${
           isDragging ? "bg-slate-100 dark:bg-very-dark-grayish-blue-2" : ""
         }`}
       >

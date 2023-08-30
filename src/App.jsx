@@ -6,14 +6,53 @@ import TodoCategories from "./components/TodoCategories";
 import { DndProvider } from "react-dnd";
 import { TouchBackend } from "react-dnd-touch-backend";
 
+const initialTodos = [
+  {
+    id: 1,
+    title: "Complete online JavaScript course",
+    isCompleted: true,
+    isShown: true,
+  },
+  {
+    id: 2,
+    title: "Jog around the park 3x",
+    isCompleted: false,
+    isShown: true,
+  },
+  {
+    id: 3,
+    title: "10 minutes meditation",
+    isCompleted: false,
+    isShown: true,
+  },
+  {
+    id: 4,
+    title: "Read for 1 hour",
+    isCompleted: false,
+    isShown: true,
+  },
+  {
+    id: 5,
+    title: "Pickup groceries",
+    isCompleted: false,
+    isShown: true,
+  },
+  {
+    id: 6,
+    title: "Complete Todo App on Frontend Mentor",
+    isCompleted: false,
+    isShown: true,
+  },
+];
+
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(initialTodos);
   const [colorTheme, setColorTheme] = useState("");
   const [filter, setFilter] = useState("all");
 
   useEffect(function () {
     let theme = localStorage.getItem("theme");
-    if (!theme) localStorage.setItem("theme", "light");
+    if (!theme) localStorage.setItem("theme", "dark");
     setColorTheme(theme);
   }, []);
 
@@ -108,7 +147,7 @@ function App() {
               colorTheme={colorTheme}
               setColorTheme={setColorTheme}
             />
-            <div className="md:shadow-2xl md:shadow-very-light-grayish-blue md:max-w-2xl md:mx-auto md:rounded-b-lg relative dark:shadow-very-dark-grayish-blue-1 dark:shadow-none">
+            <div className="md:shadow-2xl md:shadow-very-light-grayish-blue md:max-w-[33rem] md:mx-auto md:rounded-b-lg relative dark:shadow-very-dark-grayish-blue-1 dark:shadow-none">
               <Todos
                 todos={todos}
                 handleCompleteTodo={handleCompleteTodo}

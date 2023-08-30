@@ -33,7 +33,7 @@ export default function Header({ onAddTodo, colorTheme, setColorTheme }) {
   }
 
   return (
-    <header className="flex flex-col gap-8 pt-10 md:max-w-2xl mx-auto ">
+    <header className="flex flex-col gap-8 pt-10 md:max-w-[33rem] mx-auto mt-8">
       <div className="flex justify-between items-center ">
         <h1 className="text-4xl uppercase text-white font-bold tracking-[9px]">
           Todo
